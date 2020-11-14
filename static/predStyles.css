@@ -1,0 +1,8 @@
+body {
+  background-color: lightgrey;
+}
+.container .row .col-sm {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Predict Covid</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='.static/styles.css') }}"> -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+  <link rel="stylesheet" href="http://hondaofishers.space/assest/js/dependancies/bootstrap-select-1.12.4/dist/css/bootstrap-select.min.css">
+
+  <link rel="stylesheet" type="text/css" href="../static/styles.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div class="jumbotron vertical-center">
+    <h1 class="display-4">Predict Sars-Cov19 Cases per Country</h1>
+    <form if="form" action="{{ url_for('predict')}}" method="POST">
+      <select class="selectpicker" name= country data-live-search="true" data-default="United States" data-flag="true">
+        <option value="Afghanistan"> Afghanistan </option>
+        <option value="Albania"> Albania </option>
+        <option value="Algeria"> Algeria </option>
+        <option value="Andorra"> Andorra </option>
+        <option value="Angola"> Angola </option>
+        <option value="Anguilla"> Anguilla </option>
+        <option value="Antigua and Barbuda"> Antigua and Barbuda </option>
+        <option value="Argentina"> Argentina </option>
+        <option value="Armenia"> Armenia </option>
+        <option value="Aruba"> Aruba </option>
+        <option value="Australia"> Australia </option>
+        <option value="Austria"> Austria </option>
+        <option value="Azerbaijan"> Azerbaijan </option>
+        <option value="Bahamas"> Bahamas </option>
+        <option value="Bahrain"> Bahrain </option>
+        <option value="Bangladesh"> Bangladesh </option>
+        <option value="Barbados"> Barbados </option>
+        <option value="Belarus"> Belarus </option>
+        <option value="Belgium"> Belgium </option>
+        <option value="Belize"> Belize </option>
+        <option value="Benin"> Benin </option>
+        <option value="Bermuda"> Bermuda </option>
+        <option value="Bhutan"> Bhutan </option>
+        <option value="Bolivia"> Bolivia </option>
+        <option value="Bonaire Sint Eustatius and Saba"> Bonaire Sint Eustatius and Saba </option>
+        <option value="Bosnia and Herzegovina"> Bosnia and Herzegovina </option>
+        <option value="Botswana"> Botswana </option>
+        <option value="Brazil"> Brazil </option>
+        <option value="British Virgin Islands"> British Virgin Islands </option>
+        <option value="Brunei"> Brunei </option>
+        <option value="Bulgaria"> Bulgaria </option>
+        <option value="Burkina Faso"> Burkina Faso </option>
+        <option value="Burundi"> Burundi </option>
+        <option value="Cambodia"> Cambodia </option>
+        <option value="Cameroon"> Cameroon </option>
+        <option value="Canada"> Canada </option>
+        <option value="Cape Verde"> Cape Verde </option>
+        <option value="Cayman Islands"> Cayman Islands </option>
+        <option value="Central African Republic"> Central African Republic </option>
+        <option value="Chad"> Chad </option>
+        <option value="Chile"> Chile </option>
+        <option value="China"> China </option>
+        <option value="Colombia"> Colombia </option>
+        <option value="Comoros"> Comoros </option>
+        <option value="Congo"> Congo </option>
+        <option value="Costa Rica"> Costa Rica </option>
+        <option value="Cote d'Ivoire"> Cote d'Ivoire </option>
+        <option value="Croatia"> Croatia </option>
+        <option value="Cuba"> Cuba </option>
+        <option value="Curacao"> Curacao </option>
+        <option value="Cyprus"> Cyprus </option>
+        <option value="Czech Republic"> Czech Republic </option>
+        <option value="Democratic Republic of Congo"> Democratic Republic of Congo </option>
+        <option value="Denmark"> Denmark </option>
+        <option value="Djibouti"> Djibouti </option>
+        <option value="Dominica"> Dominica </option>
+        <option value="Dominican Republic"> Dominican Republic </option>
+        <option value="Ecuador"> Ecuador </option>
+        <option value="Egypt"> Egypt </option>
+        <option value="El Salvador"> El Salvador </option>
+        <option value="Equatorial Guinea"> Equatorial Guinea </option>
+        <option value="Eritrea"> Eritrea </option>
+        <option value="Estonia"> Estonia </option>
+        <option value="Ethiopia"> Ethiopia </option>
+        <option value="Faeroe Islands"> Faeroe Islands </option>
+        <option value="Falkland Islands"> Falkland Islands </option>
+        <option value="Fiji"> Fiji </option>
+        <option value="Finland"> Finland </option>
+        <option value="France"> France </option>
+        <option value="French Polynesia"> French Polynesia </option>
+        <option value="Gabon"> Gabon </option>
+        <option value="Gambia"> Gambia </option>
+        <option value="Georgia"> Georgia </option>
+        <option value="Germany"> Germany </option>
+        <option value="Ghana"> Ghana </option>
+        <option value="Gibraltar"> Gibraltar </option>
+        <option value="Greece"> Greece </option>
+        <option value="Greenland"> Greenland </option>
+        <option value="Grenada"> Grenada </option>
+        <option value="Guam"> Guam </option>
+        <option value="Guatemala"> Guatemala </option>
+        <option value="Guernsey"> Guernsey </option>
+        <option value="Guinea"> Guinea </option>
+        <option value="Guinea-Bissau"> Guinea-Bissau </option>
+        <option value="Guyana"> Guyana </option>
+        <option value="Haiti"> Haiti </option>
+        <option value="Honduras"> Honduras </option>
+        <option value="Hong Kong"> Hong Kong </option>
+        <option value="Hungary"> Hungary </option>
+        <option value="Iceland"> Iceland </option>
+        <option value="India"> India </option>
+        <option value="Indonesia"> Indonesia </option>
+        <option value="Iran"> Iran </option>
+        <option value="Iraq"> Iraq </option>
+        <option value="Ireland"> Ireland </option>
+        <option value="Isle of Man"> Isle of Man </option>
+        <option value="Israel"> Israel </option>
+        <option value="Italy"> Italy </option>
+        <option value="Jamaica"> Jamaica </option>
+        <option value="Japan"> Japan </option>
+        <option value="Jersey"> Jersey </option>
+        <option value="Jordan"> Jordan </option>
+        <option value="Kazakhstan"> Kazakhstan </option>
+        <option value="Kenya"> Kenya </option>
+        <option value="Kosovo"> Kosovo </option>
+        <option value="Kuwait"> Kuwait </option>
+        <option value="Kyrgyzstan"> Kyrgyzstan </option>
+        <option value="Laos"> Laos </option>
+        <option value="Latvia"> Latvia </option>
+        <option value="Lebanon"> Lebanon </option>
+        <option value="Lesotho"> Lesotho </option>
+        <option value="Liberia"> Liberia </option>
+        <option value="Libya"> Libya </option>
+        <option value="Liechtenstein"> Liechtenstein </option>
+        <option value="Lithuania"> Lithuania </option>
+        <option value="Luxembourg"> Luxembourg </option>
+        <option value="Macedonia"> Macedonia </option>
+        <option value="Madagascar"> Madagascar </option>
+        <option value="Malawi"> Malawi </option>
+        <option value="Malaysia"> Malaysia </option>
+        <option value="Maldives"> Maldives </option>
+        <option value="Mali"> Mali </option>
+        <option value="Malta"> Malta </option>
+        <option value="Marshall Islands"> Marshall Islands </option>
+        <option value="Mauritania"> Mauritania </option>
+        <option value="Mauritius"> Mauritius </option>
+        <option value="Mexico"> Mexico </option>
+        <option value="Moldova"> Moldova </option>
+        <option value="Monaco"> Monaco </option>
+        <option value="Mongolia"> Mongolia </option>
+        <option value="Montenegro"> Montenegro </option>
+        <option value="Montserrat"> Montserrat </option>
+        <option value="Morocco"> Morocco </option>
+        <option value="Mozambique"> Mozambique </option>
+        <option value="Myanmar"> Myanmar </option>
+        <option value="Namibia"> Namibia </option>
+        <option value="Nepal"> Nepal </option>
+        <option value="Netherlands"> Netherlands </option>
+        <option value="New Caledonia"> New Caledonia </option>
+        <option value="New Zealand"> New Zealand </option>
+        <option value="Nicaragua"> Nicaragua </option>
+        <option value="Niger"> Niger </option>
+        <option value="Nigeria"> Nigeria </option>
+        <option value="Northern Mariana Islands"> Northern Mariana Islands </option>
+        <option value="Norway"> Norway </option>
+        <option value="Oman"> Oman </option>
+        <option value="Pakistan"> Pakistan </option>
+        <option value="Palestine"> Palestine </option>
+        <option value="Panama"> Panama </option>
+        <option value="Papua New Guinea"> Papua New Guinea </option>
+        <option value="Paraguay"> Paraguay </option>
+        <option value="Peru"> Peru </option>
+        <option value="Philippines"> Philippines </option>
+        <option value="Poland"> Poland </option>
+        <option value="Portugal"> Portugal </option>
+        <option value="Puerto Rico"> Puerto Rico </option>
+        <option value="Qatar"> Qatar </option>
+        <option value="Romania"> Romania </option>
+        <option value="Russia"> Russia </option>
+        <option value="Rwanda"> Rwanda </option>
+        <option value="Saint Kitts and Nevis"> Saint Kitts and Nevis </option>
+        <option value="Saint Lucia"> Saint Lucia </option>
+        <option value="Saint Vincent and the Grenadines"> Saint Vincent and the Grenadines </option>
+        <option value="San Marino"> San Marino </option>
+        <option value="Sao Tome and Principe"> Sao Tome and Principe </option>
+        <option value="Saudi Arabia"> Saudi Arabia </option>
+        <option value="Senegal"> Senegal </option>
+        <option value="Serbia"> Serbia </option>
+        <option value="Seychelles"> Seychelles </option>
+        <option value="Sierra Leone"> Sierra Leone </option>
+        <option value="Singapore"> Singapore </option>
+        <option value="Sint Maarten (Dutch part)"> Sint Maarten (Dutch part) </option>
+        <option value="Slovakia"> Slovakia </option>
+        <option value="Slovenia"> Slovenia </option>
+        <option value="Solomon Islands"> Solomon Islands </option>
+        <option value="Somalia"> Somalia </option>
+        <option value="South Africa"> South Africa </option>
+        <option value="South Korea"> South Korea </option>
+        <option value="South Sudan"> South Sudan </option>
+        <option value="Spain"> Spain </option>
+        <option value="Sri Lanka"> Sri Lanka </option>
+        <option value="Sudan"> Sudan </option>
+        <option value="Suriname"> Suriname </option>
+        <option value="Swaziland"> Swaziland </option>
+        <option value="Sweden"> Sweden </option>
+        <option value="Switzerland"> Switzerland </option>
+        <option value="Syria"> Syria </option>
+        <option value="Taiwan"> Taiwan </option>
+        <option value="Tajikistan"> Tajikistan </option>
+        <option value="Tanzania"> Tanzania </option>
+        <option value="Thailand"> Thailand </option>
+        <option value="Timor"> Timor </option>
+        <option value="Togo"> Togo </option>
+        <option value="Trinidad and Tobago"> Trinidad and Tobago </option>
+        <option value="Tunisia"> Tunisia </option>
+        <option value="Turkey"> Turkey </option>
+        <option value="Turks and Caicos Islands"> Turks and Caicos Islands </option>
+        <option value="Uganda"> Uganda </option>
+        <option value="Ukraine"> Ukraine </option>
+        <option value="United Arab Emirates"> United Arab Emirates </option>
+        <option value="United Kingdom"> United Kingdom </option>
+        <option value="United States"> United States </option>
+        <option value="Uruguay"> Uruguay </option>
+        <option value="Uzbekistan"> Uzbekistan </option>
+        <option value="Vanuatu"> Vanuatu </option>
+        <option value="Vatican"> Vatican </option>
+        <option value="Venezuela"> Venezuela </option>
+        <option value="Vietnam"> Vietnam </option>
+        <option value="Wallis and Futuna"> Wallis and Futuna </option>
+        <option value="Western Sahara"> Western Sahara </option>
+        <option value="Yemen"> Yemen </option>
+        <option value="Zambia"> Zambia </option>
+        <option value="Zimbabwe"> Zimbabwe </option>
+      </select>
+      <!-- <input type="text" name="country" placeholder="Country" required="required"> -->
+      <!-- Uncomment Following lines to incorporate Multiple Models -->
+      <!-- <select id="Model" name="Model">
+        <option value="XGBoost">XGB</option>
+        <option value="SVM">SVM</option>
+        <option value="NaiveBayes">NB</option>
+      </select> -->
+      <!-- <select id="predictionType" name="Prediction Type">
+        <option value="N">Only Predict</option>
+        <option value="Y">Include Graphs</option>
+      </select> -->
+      <button id="button" type="submit" class="btn btn-secondary btn-large">Predict</button>
+    </form>
+    <br>
+    <div id="carouselExampleIndicators" class="carousel slide" data-interval="0" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="./static/Images/cov19.jpg" class="d-block-1" alt="Disclaimer">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="font-weight-normal">This Is a Demonstartion of a Machine Learning Application to Predict Covid 19 Cases</h3>
+            <h5 class="font-weight-light">The Predicted Cases are not Legal or Medical Advice. The data was sourced from https://covid.ourworldindata.org/data/owid-covid-data.csv</h5>
+            <p class="font-italic">Access our API or visit <a href="https://coronavirus.jhu.edu/map.html"> https://coronavirus.jhu.edu/map.html </a>to get latest data on Covid 19</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./static/Images/ml.jpg" class="d-block-2" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="font-weight-normal">The current model can predict cases with upto 90% Accuracy on Training Data</h3>
+            <h5 class="font-weight-light">The Predicted Cases are not Legal or Medical Advice</h5>
+            <p class="font-italic">Access our API or visit <a href="https://coronavirus.jhu.edu/map.html"> https://coronavirus.jhu.edu/map.html </a> to get latest data on Covid 19</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="./static/Images/apiImage.png" class="d-block-3" alt="...">
+          <div class="carousel-caption d-none d-md-block">
+            <h3 class="font-weight-normal">Access our API through website/api/?country='YOUR COUNTRY HERE'</h3>
+            <h5 class="font-italic">Our API is based on John Hopkins University Covid Data and OurWorldinData covid datasets</h5>
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+
+  </div>
+
+  <h5>Note : Currently WeB Application only allows Gradient Boosted Linear Regression model due to loading overhead. </h5>
+  <h5> Visit our github to access the full version of the APP </h5>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="http://hondaofishers.space/assest/js/dependancies/bootstrap-select-1.12.4/dist/js/bootstrap-select.min.js"></script>
+  <script src="http://hondaofishers.space/assest/js/countrypicker.min.js"></script>
+  <script type="text/javascript" src="../static/index.js" charset="utf-8"> </script>
+</body>
+
+</html>
