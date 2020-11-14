@@ -40,14 +40,14 @@ def featurize():
         df[col].fillna('missing', inplace=True)
         df[col] = encoder.fit_transform(df[col])
     country_mapper = dict(zip(countries,df['location']))
-    with open('.\static\Data\country_mapper.pickle','wb') as write:
+    with open('static\Data\country_mapper.pickle','wb') as write:
         pickle.dump(country_mapper,write,protocol=pickle.HIGHEST_PROTOCOL)
     # impute numeric cols
     num_cols = df.select_dtypes(include=['float64']).copy()
     for col in num_cols:
         df[col].fillna((df[col].mean()), inplace=True)
 
-    df.to_pickle('.\static\Data\dataframe.pickle')
+    df.to_pickle('static\Data\dataframe.pickle')
 
 
 def main():
