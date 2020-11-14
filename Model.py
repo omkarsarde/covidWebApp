@@ -130,7 +130,7 @@ def main():
     # train_rfr()
     # train_dTree()
     train_xgb()
-    test('India','svm')
+    test('India','xgb')
 
 
 if __name__ == '__main__':
