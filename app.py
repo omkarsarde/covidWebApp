@@ -126,6 +126,17 @@ def api():
                 'Active_Cases': Active,
                 'Labels': labels,
                 "Source DISCLAIMER": "Demonstrative ML API. Data collected from ourworldindata.org and JHU"}
+    elif 'country' in request.args:
+        input_val = request.args['country']
+        prediction = test(input_val, 'xgb')
+        prediction = floor(prediction)
+        input_val = input_val.upper()
+        Confirmed_Cases, Deaths, Recovered, Active, labels = download_file(input_val)
+        pred = {'Nation': input_val, 'Predicted New Cases': prediction,
+                'Confirmed_Cases': Confirmed_Cases, 'Deaths': Deaths, 'Recovered_Cases': Recovered,
+                'Active_Cases': Active,
+                'Labels': labels,
+                "Source DISCLAIMER": "Demonstrative ML API. Data collected from ourworldindata.org and JHU"}
     else:
         return "Error: No Country field provided or Invalid Country. Please specify an proper Country."
     return jsonify(pred)
